@@ -1,0 +1,25 @@
+.chat-grid {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+}
+
+.messages-grid {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.chat-grid > * {
+    height:4em !important;
+}
+
+.messages {
+    overflow-y: scroll;
+}
+
+.message-board {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 90vh;
+}
