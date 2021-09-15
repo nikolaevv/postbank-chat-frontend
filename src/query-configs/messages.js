@@ -14,15 +14,26 @@ export const messagesRequest = () => {
     };
 };
   
-export const changeMessagesMutation = (messages, text, optimistic) => {
+export const sendMessage = (messages, text, sender, optimistic) => {
     const queryConfig = {
         url: `${apiBase}/api/messages`,
         body: {
             text,
+            sender
         },
+        transform: body => ({
+            messages: body,
+        }),
         update: {
-            messages: (prev, next) => next,
+            messages: (prev, next) => {
+                console.log(prev)
+                console.log(next)
+                return next;
+            },
         },
+        options: {
+            method: 'POST'
+        }
     };
 
     if (optimistic) {

@@ -8,7 +8,7 @@ const App = () => {
     return (
         <div>
             <Container>
-                <MessageBoard/>
+                <MessageBoard role="BANK"/>
             </Container>
         </div>
     );

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 
 import { useSelector } from 'react-redux';
 import { useRequest, useMutation } from 'redux-query-react';
@@ -10,17 +10,32 @@ import Message from '../message';
 import { Grid, Button, FormControl, InputLabel, OutlinedInput } from '@material-ui/core';
 import './message-board.css';
 
-const MessageBoard = () => {
+const MessageBoard = ({role}) => {
     const [text, setText] = useState('');
-    const [status, setStatus] = React.useState(null);
-    const [error, setError] = React.useState(null);
+    const [status, setStatus] = useState(null);
+    const [error, setError] = useState(null);
 
     useRequest(messagesQueryConfigs.messagesRequest());
     const messages = useSelector(selectors.getMessages);
 
+    const [queryState, sendMessage] = useMutation(optimistic =>
+        messagesQueryConfigs.sendMessage(messages, text, role, optimistic),
+    );
+    
+    const submitMessage = useCallback(
+        optimistic => {
+            sendMessage(optimistic).then(result => {
+                if (result !== 200) {
+                    setError(result.text);
+                }
+        
+                setStatus(result.status);
+            });
+        },
+        [sendMessage],
+    );
+
     useEffect(() => {
-        console.log('aa')
-        console.log(messages);
     }, [messages])
 
     const isPending = messages.length === 0;
@@ -55,16 +70,22 @@ const MessageBoard = () => {
                             id="outlined-adornment-amount"
                             value={text}
                             onChange={(e) => setText(e.target.value)}
-                            /* startAdornment={<InputAdornment position="start">$</InputAdornment>} */
                             labelWidth={60}
                         />
                     </FormControl>
                 </Grid>
 
                 <Grid item xs={2}>
-                    <Button style={{marginLeft: '1em', minHeight: '4em', minWidth: '7em'}} variant="contained" color="primary" onClick={() => {
+                    <Button 
+                        style={{marginLeft: '1em', minHeight: '4em', minWidth: '7em'}} 
+                        variant="contained" 
+                        color="primary" 
+                        onClick={() => {
+                            submitMessage();
+                            setText('');
+                        }}
 
-                    }}>
+                    >
                         Отправить
                     </Button>
                 </Grid>
