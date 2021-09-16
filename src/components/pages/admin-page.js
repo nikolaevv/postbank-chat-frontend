@@ -8,18 +8,17 @@ import './pages.css';
 
 const AdminPage = () => {
     return (
-        <Container>
-            <div className="admin-board-container">
-                
-                    <AdminHeader/>
-                    
-                    <div className="admin-board">
+        <div className="admin-board-container">
+            <AdminHeader/>
+            <div>
+                <Container>
+                    <div className="message-board">
                         <Dialogs/>
                         <MessageBoard role="BANK"/>
                     </div>
-                
+                </Container>
             </div>
-        </Container>
+        </div>
     );
 };
 

@@ -1,11 +1,19 @@
 header {
+    background-color: #CE053C;
+}
+
+.header {
     display: flex;
     align-items: center;
     margin-bottom: 0;
     align-items: stretch;
 }
 
-header > * {
+header > div {
+    padding: 0 !important;
+}
+
+.header > * {
     padding: 1em 0 1em 0;
 }
 

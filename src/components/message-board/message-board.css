@@ -26,9 +26,10 @@
     left: 50%;
 }
 
-.message-board {
+.message-board-root {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-width: 70%;
+    max-height: 85vh;
 }

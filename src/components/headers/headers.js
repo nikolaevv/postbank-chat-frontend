@@ -5,22 +5,26 @@ import userLogo from '../../files/images/user.png';
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import './headers.css';
-import { Typography } from '@material-ui/core';
+import { Typography, Container } from '@material-ui/core';
 
 const BasicHeader = ({image, title}) => {
     return (
         <header>
-            <div className="header-image-box">
-                <a href="https://www.pochtabank.ru/">
-                    <img className="header-image" src={image}/>
-                </a>
-            </div>
+            <Container>
+                <div className="header">
+                    <div className="header-image-box">
+                        <a href="https://www.pochtabank.ru/">
+                            <img className="header-image" src={image}/>
+                        </a>
+                    </div>
 
-            <div className="header-title">
-                <Typography color="secondary" variant="h4">
-                    {title}
-                </Typography>
-            </div>
+                    <div className="header-title">
+                        <Typography color="secondary" variant="h4">
+                            {title}
+                        </Typography>
+                    </div>
+                </div>
+            </Container>
         </header>
     );
 };

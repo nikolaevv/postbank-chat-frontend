@@ -8,15 +8,14 @@ import './pages.css';
 
 const UserPage = () => {
     return (
-        <Container>
-            <div className="admin-board-container">
-                    <UserHeader/>
-                    
-                    <div className="admin-board">
-                        <MessageBoard full role="USER"/>
-                    </div>
+        <div className="admin-board-container">
+            <UserHeader/>
+            <div>
+                <Container className="message-board">
+                    <MessageBoard full role="USER"/>
+                </Container>
             </div>
-        </Container>
+        </div>
     );
 };
 

@@ -57,7 +57,7 @@ const MessageBoard = ({role, full}) => {
     const last_message_date =  moment(messages[messages.length - 1].timestamp).format('ll');
 
     return (
-        <div className="message-board" style={full && {width: "100%"}}>
+        <div className="message-board-root" style={full && {width: "100%"}}>
             
             <div className="messages">
                 {messages.length > 0 && 
@@ -68,12 +68,14 @@ const MessageBoard = ({role, full}) => {
                 
                 {
                     messages.map((message) => {
-                        const {id, text, sender, timestamp} = message;
+                        const {id, text, sender, timestamp, assensment} = message;
 
                         return <Message
                             key={id}
                             text={text} 
-                            timestamp={timestamp} 
+                            timestamp={timestamp}
+                            assensment={assensment}
+                            role={role}
                             sender={sender === "BANK" ? "LEFT" : "RIGHT"}
                         />;
                     })
