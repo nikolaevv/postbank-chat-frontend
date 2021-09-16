@@ -1,15 +1,14 @@
 import { Container } from '@material-ui/core';
 import React from 'react';
 import MessageBoard from '../message-board/message-board';
+import AdminPage from '../pages/admin-page';
 
 import './app.css';
 
 const App = () => {
     return (
         <div>
-            <Container>
-                <MessageBoard role="BANK"/>
-            </Container>
+            <AdminPage/>
         </div>
     );
 };

@@ -1,0 +1,20 @@
+.dialog-box {
+    display: flex;
+    align-items: center;
+    padding-right: 10em;
+    width: 100%;
+    cursor: pointer;
+}
+
+.dialog-box:hover {
+    background-color: #ecf0f1;
+}
+
+.dialogs {
+    margin-right: 4em;
+}
+
+.dialogs .dialogs-area {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
