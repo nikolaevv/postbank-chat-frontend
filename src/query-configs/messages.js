@@ -26,8 +26,6 @@ export const sendMessage = (messages, text, sender, optimistic) => {
         }),
         update: {
             messages: (prev, next) => {
-                console.log(prev)
-                console.log(next)
                 return next;
             },
         },

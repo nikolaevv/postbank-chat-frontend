@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useCallback} from 'react';
 
 import { useSelector } from 'react-redux';
+import useInterval from '../../hooks/use-interval';
 import { useRequest, useMutation } from 'redux-query-react';
 
 import * as selectors from '../../selectors/messages';
@@ -20,11 +21,13 @@ const scrollToBottomOfChat = () => {
 
 const MessageBoard = ({role, full}) => {
     const [text, setText] = useState('');
-    const [status, setStatus] = useState(null);
+    const [requestStatus, setRequestStatus] = useState(null);
     const [error, setError] = useState(null);
 
-    useRequest(messagesQueryConfigs.messagesRequest());
     const messages = useSelector(selectors.getMessages);
+    const [{isPending, status}, refresh] = useRequest(messagesQueryConfigs.messagesRequest());
+
+    useInterval(refresh, 1000);
 
     const [queryState, sendMessage] = useMutation(optimistic =>
         messagesQueryConfigs.sendMessage(messages, text, role, optimistic),
@@ -36,8 +39,7 @@ const MessageBoard = ({role, full}) => {
                 if (result !== 200) {
                     setError(result.text);
                 }
-        
-                setStatus(result.status);
+                setRequestStatus(result.status);
             });
         },
         [sendMessage],
@@ -47,9 +49,7 @@ const MessageBoard = ({role, full}) => {
         scrollToBottomOfChat();
     }, [messages])
 
-    const isPending = messages.length === 0;
-
-    if (isPending) {
+    if (messages.length === 0) {
         return <div>Loading...</div>
     }
 
