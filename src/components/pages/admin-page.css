@@ -1,4 +1,9 @@
 .admin-board {
     display: flex;
     justify-content: space-between;
+    max-height: 80%;
+}
+
+.admin-board-container {
+    height: 100vh;
 }
