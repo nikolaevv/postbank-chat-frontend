@@ -11,7 +11,14 @@ import moment from 'moment';
 import { Grid, Button, FormControl, InputLabel, OutlinedInput, Chip } from '@material-ui/core';
 import './message-board.css';
 
-const MessageBoard = ({role}) => {
+const scrollToBottomOfChat = () => {
+    const obj = document.getElementsByClassName('messages')[0];
+    if (obj) {
+        obj.scrollTop = obj.scrollHeight;
+    }
+};
+
+const MessageBoard = ({role, full}) => {
     const [text, setText] = useState('');
     const [status, setStatus] = useState(null);
     const [error, setError] = useState(null);
@@ -37,6 +44,7 @@ const MessageBoard = ({role}) => {
     );
 
     useEffect(() => {
+        scrollToBottomOfChat();
     }, [messages])
 
     const isPending = messages.length === 0;
@@ -49,7 +57,7 @@ const MessageBoard = ({role}) => {
     const last_message_date =  moment(messages[messages.length - 1].timestamp).format('ll');
 
     return (
-        <div className="message-board">
+        <div className="message-board" style={full && {width: "100%"}}>
             
             <div className="messages">
                 {messages.length > 0 && 

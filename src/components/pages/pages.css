@@ -7,3 +7,7 @@
 .admin-board-container {
     height: 100vh;
 }
+
+.message-full-board {
+    width: 100%;
+}

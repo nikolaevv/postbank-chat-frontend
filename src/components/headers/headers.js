@@ -11,7 +11,9 @@ const BasicHeader = ({image, title}) => {
     return (
         <header>
             <div className="header-image-box">
-                <img className="header-image" src={userLogo}/>
+                <a href="https://www.pochtabank.ru/">
+                    <img className="header-image" src={image}/>
+                </a>
             </div>
 
             <div className="header-title">
@@ -30,7 +32,7 @@ const AdminHeader = () => {
 };
 
 const UserHeader = () => {
-    return <BasicHeader image={mainLogo} title={"Почта Банк"}/>
+    return <BasicHeader image={mainLogo} title={"Почта Банк".toUpperCase()}/>
 };
 
 export {AdminHeader, UserHeader};

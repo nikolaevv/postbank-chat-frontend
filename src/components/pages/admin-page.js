@@ -4,7 +4,7 @@ import MessageBoard from '../message-board/message-board';
 import Dialogs from '../dialogs/dialogs';
 import { AdminHeader } from '../headers/headers';
 
-import './admin-page.css';
+import './pages.css';
 
 const AdminPage = () => {
     return (
