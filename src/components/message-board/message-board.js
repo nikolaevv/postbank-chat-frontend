@@ -6,8 +6,9 @@ import { useRequest, useMutation } from 'redux-query-react';
 import * as selectors from '../../selectors/messages';
 import * as messagesQueryConfigs from '../../query-configs/messages';
 import Message from '../message';
+import moment from 'moment';
 
-import { Grid, Button, FormControl, InputLabel, OutlinedInput } from '@material-ui/core';
+import { Grid, Button, FormControl, InputLabel, OutlinedInput, Chip } from '@material-ui/core';
 import './message-board.css';
 
 const MessageBoard = ({role}) => {
@@ -44,9 +45,19 @@ const MessageBoard = ({role}) => {
         return <div>Loading...</div>
     }
 
+    const last_message_timestamp = messages.length > 0 ? new Date(messages[messages.length - 1].timestamp) : new Date();
+    const last_message_date =  moment(messages[messages.length - 1].timestamp).format('ll');
+
     return (
         <div className="message-board">
+            
             <div className="messages">
+                {messages.length > 0 && 
+                    <div className="last-messaging-date">
+                        <Chip className="date-chip" label={last_message_date} />
+                    </div>
+                }
+                
                 {
                     messages.map((message) => {
                         const {id, text, sender, timestamp} = message;

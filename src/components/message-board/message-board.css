@@ -16,7 +16,16 @@
 }
 
 .messages {
+    padding-top: 2em;
     overflow-y: scroll;
+}
+
+.last-messaging-date {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 2;
+    left: 55%;
 }
 
 .message-board {
