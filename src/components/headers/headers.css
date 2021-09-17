@@ -10,7 +10,6 @@ header {
 }
 
 header > div {
-    padding: 0 !important;
 }
 
 .header > * {

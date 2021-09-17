@@ -7,19 +7,19 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import './headers.css';
 import { Typography, Container } from '@material-ui/core';
 
-const BasicHeader = ({image, title}) => {
+const BasicHeader = ({image, title, typographyStyle}) => {
     return (
         <header>
             <Container>
                 <div className="header">
                     <div className="header-image-box">
                         <a href="https://www.pochtabank.ru/">
-                            <img className="header-image" src={image}/>
+                            <img className="header-image" src={image} alt="logo"/>
                         </a>
                     </div>
 
                     <div className="header-title">
-                        <Typography color="secondary" variant="h4">
+                        <Typography style={typographyStyle} color="secondary" variant="h4">
                             {title}
                         </Typography>
                     </div>
@@ -36,7 +36,7 @@ const AdminHeader = () => {
 };
 
 const UserHeader = () => {
-    return <BasicHeader image={mainLogo} title={"Почта Банк".toUpperCase()}/>
+    return <BasicHeader image={mainLogo} title={"Почта Банк".toUpperCase()} typographyStyle={{fontWeight: 900}}/>
 };
 
 export {AdminHeader, UserHeader};
