@@ -60,8 +60,9 @@ const MessageBoard = ({role, full}) => {
         scrollToBottomOfChat();
         if (!isStarred && messages.length > 0 && messages[messages.length - 1].sender === 'USER' && messages[messages.length - 1].assensment > 70 && role === 'USER') {
             setOpen(true);
+            setStarred(true);
         }
-    }, [messages.length])
+    }, [messages.length, isStarred, messages, role])
 
     if (messages.length === 0) {
         return <div>Loading...</div>
