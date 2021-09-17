@@ -8,24 +8,12 @@ const Dialogs = () => {
     return (
         <div className="dialogs">
             <div className="dialogs-area">
-            <Paper square>
-                <div className="dialog-box">
-                    <AccountCircleIcon fontSize="large" className="message-sender-icon"/>
-                    <Typography variant="body2">Василий Смоляр</Typography>
-                </div>
-            </Paper>
-            <Paper square>
-                <div className="dialog-box">
-                    <AccountCircleIcon fontSize="large" className="message-sender-icon"/>
-                    <Typography variant="body2">Василий Смоляр</Typography>
-                </div>
-            </Paper>
-            <Paper square>
-                <div className="dialog-box">
-                    <AccountCircleIcon fontSize="large" className="message-sender-icon"/>
-                    <Typography variant="body2">Василий Смоляр</Typography>
-                </div>
-            </Paper>
+                <Paper square>
+                    <div className="dialog-box">
+                        <AccountCircleIcon fontSize="large" className="message-sender-icon"/>
+                        <Typography variant="body2">Иван Иванов</Typography>
+                    </div>
+                </Paper>
             </div>
         </div>
     );
