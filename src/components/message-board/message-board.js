@@ -2,6 +2,7 @@ import React, {useEffect, useState, useCallback} from 'react';
 
 import { useSelector } from 'react-redux';
 import useInterval from '../../hooks/use-interval';
+import ReactStars from 'react-stars'
 import { useRequest, useMutation } from 'redux-query-react';
 
 import * as selectors from '../../selectors/messages';
@@ -9,7 +10,7 @@ import * as messagesQueryConfigs from '../../query-configs/messages';
 import Message from '../message';
 import moment from 'moment';
 
-import { Grid, Button, FormControl, InputLabel, OutlinedInput, Chip } from '@material-ui/core';
+import { Grid, Button, FormControl, InputLabel, OutlinedInput, Chip, Card, CardActions, CardContent, Typography, Backdrop } from '@material-ui/core';
 import './message-board.css';
 
 const scrollToBottomOfChat = () => {
@@ -23,6 +24,16 @@ const MessageBoard = ({role, full}) => {
     const [text, setText] = useState('');
     const [requestStatus, setRequestStatus] = useState(null);
     const [error, setError] = useState(null);
+    const [isStarred, setStarred] = useState(false);
+    const [isStarring, setStarring] = useState(true);
+    const [open, setOpen] = React.useState(false);
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const handleToggle = () => {
+        setOpen(!open);
+    };
 
     const messages = useSelector(selectors.getMessages);
     const [{isPending, status}, refresh] = useRequest(messagesQueryConfigs.messagesRequest());
@@ -47,6 +58,9 @@ const MessageBoard = ({role, full}) => {
 
     useEffect(() => {
         scrollToBottomOfChat();
+        if (!isStarred && messages.length > 0 && messages[messages.length - 1].sender === 'USER' && messages[messages.length - 1].assensment > 70 && role === 'USER') {
+            setOpen(true);
+        }
     }, [messages.length])
 
     if (messages.length === 0) {
@@ -58,6 +72,27 @@ const MessageBoard = ({role, full}) => {
 
     return (
         <div className="message-board-root" style={full && {width: "100%"}}>
+            <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 5 }}
+                open={open}
+                style={{zIndex: 3}}
+                onClick={handleClose}>
+
+                <Card className="notification-container">
+                    <CardContent>
+                        <Typography variant="body1">
+                            Оцените работу службы поддержки
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        {isStarring && <ReactStars
+                            count={5}
+                            onChange={() => {}}
+                            size={24}
+                            color2={'#ffd700'}/>
+                        }
+                    </CardActions>
+                </Card>
+            </Backdrop>
             
             <div className="messages">
                 {messages.length > 0 && 

@@ -33,3 +33,20 @@
     min-width: 70%;
     max-height: 85vh;
 }
+
+.notification-container {
+    text-align: center;
+    padding: 0.5em !important;
+}
+
+.notification-container > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating {
+    z-index: 3;
+    position: relative;
+}
