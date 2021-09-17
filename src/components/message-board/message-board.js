@@ -53,8 +53,8 @@ const MessageBoard = ({role, full}) => {
         return <div>Loading...</div>
     }
 
-    const last_message_timestamp = messages.length > 0 ? new Date(messages[messages.length - 1].timestamp) : new Date();
-    const last_message_date =  moment(messages[messages.length - 1].timestamp).format('ll');
+    //const last_message_timestamp = messages.length > 0 ? new Date(messages[messages.length - 1].timestamp) : new Date();
+    const last_message_date = moment(messages[messages.length - 1].timestamp).format('ll');
 
     return (
         <div className="message-board-root" style={full && {width: "100%"}}>
