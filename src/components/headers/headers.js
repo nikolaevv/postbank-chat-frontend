@@ -29,8 +29,6 @@ const BasicHeader = ({image, title, typographyStyle}) => {
     );
 };
 
-const icon = <AccountCircleIcon color="secondary" fontSize="large" className="message-sender-icon"/>;
-
 const AdminHeader = () => {
     return <BasicHeader image={userLogo} title={"Иван Иванов"}/>
 };
