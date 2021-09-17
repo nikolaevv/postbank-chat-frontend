@@ -3,7 +3,6 @@ import React from 'react';
 import mainLogo from '../../files/images/logo.png';
 import userLogo from '../../files/images/user.png';
 
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import './headers.css';
 import { Typography, Container } from '@material-ui/core';
 
