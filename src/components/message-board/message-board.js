@@ -47,7 +47,7 @@ const MessageBoard = ({role, full}) => {
 
     useEffect(() => {
         scrollToBottomOfChat();
-    }, [messages])
+    }, [messages.length])
 
     if (messages.length === 0) {
         return <div>Loading...</div>
