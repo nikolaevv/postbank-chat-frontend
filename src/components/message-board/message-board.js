@@ -58,6 +58,9 @@ const MessageBoard = ({role, full}) => {
 
     useEffect(() => {
         scrollToBottomOfChat();
+    }, [messages.length])
+
+    useEffect(() => {
         if (!isStarred && messages.length > 0 && messages[messages.length - 1].sender === 'USER' && messages[messages.length - 1].assensment > 70 && role === 'USER') {
             setOpen(true);
             setStarred(true);
