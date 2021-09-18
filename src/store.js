@@ -6,13 +6,13 @@ export const getQueries = state => state.queries;
 export const getEntities = state => state.entities;
 
 const reducer = combineReducers({
-  entities: entitiesReducer,
-  queries: queriesReducer,
+    entities: entitiesReducer,
+    queries: queriesReducer,
 });
 
 const store = createStore(
-  reducer,
-  applyMiddleware(queryMiddleware(superagentInterface, getQueries, getEntities)),
+    reducer,
+    applyMiddleware(queryMiddleware(superagentInterface, getQueries, getEntities)),
 );
 
 export default store;
